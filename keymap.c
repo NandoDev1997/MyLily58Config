@@ -119,11 +119,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   `----------------------------'           '------'--------------------'
  */
 [_RAISE] = LAYOUT(
-  KC_TRNS,  KC_EXLM,  KC_TILD,  KC_PIPE,  KC_LT,    KC_GT,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-  KC_TRNS,  KC_DLR,   KC_PMNS,  KC_PLUS,  KC_LPRN,  KC_RPRN,                       XXXXXXX,  KC_PAGE_UP,  KC_UP,    KC_PAGE_DOWN,  XXXXXXX,  XXXXXXX,
+  KC_TRNS,  KC_EXLM,  KC_TILD,  KC_BSLS,  KC_LT,    KC_GT,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+  KC_TRNS,  KC_DLR,   KC_PMNS,  KC_PLUS,  KC_LPRN,  KC_RPRN,                       KC_ENT,  KC_PAGE_UP,  KC_UP,    KC_PAGE_DOWN,  XXXXXXX,  XXXXXXX,
   KC_TRNS,  KC_PSLS,  KC_AMPR,  KC_PEQL,  KC_LCBR,  KC_RCBR,                       KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_END,  XXXXXXX,
   KC_TRNS,  KC_HASH,  KC_PERC,  KC_ASTR,  KC_LBRC,  KC_RBRC,   KC_TRNS, KC_TRNS,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_TRNS,
-                                KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS
+                                KC_TRNS,  KC_TRNS,  KC_LALT,   KC_TRNS, KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS
 ),
 /* ADJUST
  * ,-----------------------------------------.                    ,---------------------------------------------.
