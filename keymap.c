@@ -15,8 +15,11 @@ enum layers {
     _ADJUST,
 };
 
+
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)
+
+
 enum custom_keycodes {
     PASS1 = SAFE_RANGE,
     PASS2,
@@ -80,50 +83,50 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,             KC_1,           KC_2,  KC_3,            KC_4,     KC_5,                       KC_6,            KC_7,           KC_8,            KC_9,            KC_0,     ALT_BSPC,
     KC_TAB,             KC_Q,           KC_W,  TD(TD_E_ACUTE),  KC_R,     KC_T,                       KC_Y,            TD(TD_U_ACUTE), TD(TD_I_ACUTE),  TD(TD_O_ACUTE),  KC_P,     KC_MINS,
     TD(TD_MAYUSCULAS),  TD(TD_A_ACUTE), KC_S,  KC_D,            KC_F,     KC_G,                       KC_H,            KC_J,           KC_K,            KC_L,            KC_SCLN,  TD(TD_COMILLAS),
-    KC_LCTL,            KC_Z,           KC_X,  KC_C,            KC_V,     KC_B,    KC_HOME, KC_END,   TD(TD_N_TILDE),  KC_M,           KC_COMM,         KC_DOT,          KC_SLSH,  TD(TD_MAYUSCULAS),
-                                               KC_LALT,         KC_LGUI,  KC_SPC,  LOWER,   RAISE,    KC_SPC,          KC_ENT,         KC_RALT
+    KC_LCTL,            KC_Z,           KC_X,  KC_C,            KC_V,     KC_B,   KC_LGUI , KC_PSCR,   TD(TD_N_TILDE),  KC_M,           KC_COMM,         KC_DOT,          KC_SLSH,  TD(TD_MAYUSCULAS),
+                                               KC_LALT,         KC_APP,  LOWER,   KC_SPC,  KC_SPC,   RAISE,           KC_ENT,         KC_RALT
 ),
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * | F1   | F2   | F3   | F4   | F5   | F6   |                    |XXXXX |  P7  |  P8  |  P9  |XXXXX |PrtScr|
+ * | ESC  | F1   | F2   | F3   | F4   | F5   |                    |XXXXX |XXXXX |XXXXX |XXXXX |XXXXX |PrtScr|
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | F7   | F8   | F9   | F10  | F11  | F12  |                    |XXXXX |  P4  |  P5  |  P6  |XXXXX |XXXXX |
+ * |XXXXX | F6   | F7   | F8   | F9   | F10  |                    |  $   |  [   |   ]  |   +  |   |  |  -   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |XXXXX |PASS1 |PASS2 |XXXXX |XXXXX |XXXXX |-------.    ,-------|XXXXX |  P1  |  P2  |  P3  |XXXXX |XXXXX |
+ * |XXXXX |XXXXX |XXXXX |XXXXX |F11   |F12   |-------.    ,-------|  #   |  (   |   )  |   =  |   &  |  "   |
  * |------+------+------+------+------+------|TRNS   |    |TRNS   |------+------+------+------+------+------|
- * |XXXXX |EMAIL1|EMAIL2|XXXXX |XXXXX |XXXXX |-------|    |-------|XXXXX |XXXXX |  P0  |XXXXX |XXXXX |XXXXX |
+ * |XXXXX |XXXXX |XXXXX |XXXXX |XXXXX |XXXXX |-------|    |-------|  /   |  {   |   }  |   *  |   %  |  \   |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   |TRNS  |TRNS  |TRNS  | / TRNS  /       \ TRNS \  | TRNS| TRNS | TRNS |
  *                   |      |      |      |/       /         \      \ |     |      |      |
  *                   `----------------------------'           '------''-------------------'
  */
 [_LOWER] = LAYOUT(
-  KC_F1,   KC_F2,  KC_F3,  KC_F4,   KC_F5,   KC_F6,                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_TRNS,
-  KC_F7,   KC_F8,  KC_F9,  KC_F10,  KC_F11,  KC_F12,                       XXXXXXX, KC_P7,   KC_P8,   KC_P9,   XXXXXXX, KC_PSCR,
-  KC_TRNS, EMAIL1, EMAIL2,  XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_P4,   KC_P5,   KC_P6,   XXXXXXX, XXXXXXX,
-  KC_TRNS, PASS1,  PASS2, XXXXXXX, XXXXXXX, XXXXXXX,   KC_TRNS, KC_TRNS,  XXXXXXX, KC_P1,   KC_P2,   KC_P3,   XXXXXXX, XXXXXXX,
-                           KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS,  KC_P0, KC_TRNS, KC_TRNS
+  KC_TRNS,   KC_F1,   KC_F2,   KC_F3,  KC_F4,  KC_F5,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_TRNS,
+  XXXXXXX,   KC_F6,   KC_F7,   KC_F8,  KC_F9,  KC_F10,                      KC_DLR,  KC_LBRC, KC_RBRC, KC_PLUS, KC_TILD, KC_TRNS,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_F11, KC_F12,                      KC_HASH, KC_LPRN, KC_RPRN, KC_PEQL, KC_AMPR, KC_TRNS,
+  XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_VOLD, KC_VOLU,  KC_TRNS, KC_TRNS,  KC_PSLS, KC_LCBR, KC_RCBR, KC_ASTR, KC_PERC, KC_BSLS,
+                             KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS
 ),
 /* RAISE
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |TRNS |  !   |  ~   |  |   |  <   |   >   |                    |XXXXX |XXXXX |XXXXX |XXXXX |XXXXX |XXXXX |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |TRNS |  $   |  -   |  +   | (    |  )    |                    |XXXXX |PgUp  | ↑    |PgDn  |XXXXX |XXXXX |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |TRNS |  /   |  &   |  =   | {    |  }    |-------.    ,-------|XXXXX | ←    | ↓    | →    |XXXXX |XXXXX |
- * |------+------+------+------+------+------| TRNS  |    | TRNS  |------+------+------+------+------+------|
- * |TRNS |  #   |  %   |  *   | [    |  ]    |-------|    |-------|XXXXX |XXXXX |XXXXX |XXXXX |XXXXX | TRNS |
+ * |TRNS |XXXXX |XXXXX |XXXXX |XXXXX | XXXXX |                    |XXXXX |XXXXX |XXXXX |XXXXX |XXXXX | <--  |
+ * |-----+------+------+------+------+-------|                    |------+------+------+------+------+------|
+ * |TRNS |XXXXX |HOME  |XXXXX |END   | XXXXX |                    |ENTER |PgUp  | ↑    |PgDn  |XXXXX |XXXXX |
+ * |-----+------+------+------+------+-------|                    |------+------+------+------+------+------|
+ * |TRNS |XXXXX |CTRL  |SHIFT |ALT   | XXXXX |-------.    ,-------|XXXXX | ←    | ↓    | →    |XXXXX |XXXXX |
+ * |-----+------+------+------+------+-------| TRNS  |    | TRNS  |------+------+------+------+------+------|
+ * |TRNS |XXXXX | CUT  | COPY |PASTE | XXXXX |-------|    |-------|XXXXX |XXXXX |XXXXX |XXXXX |XXXXX |XXXXX |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   | TRNS | TRNS | TRNS | / TRNS  /       \ TRNS \ | TRNS | TRNS | TRNS |
  *                   |      |      |      |/       /         \      \|      |      |      |
  *                   `----------------------------'           '------'--------------------'
  */
 [_RAISE] = LAYOUT(
-  KC_TRNS,  KC_EXLM,  KC_TILD,  KC_BSLS,  KC_LT,    KC_GT,                         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-  KC_TRNS,  KC_DLR,   KC_PMNS,  KC_PLUS,  KC_LPRN,  KC_RPRN,                       KC_ENT,  KC_PAGE_UP,  KC_UP,    KC_PAGE_DOWN,  XXXXXXX,  XXXXXXX,
-  KC_TRNS,  KC_PSLS,  KC_AMPR,  KC_PEQL,  KC_LCBR,  KC_RCBR,                       KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_END,  XXXXXXX,
-  KC_TRNS,  KC_HASH,  KC_PERC,  KC_ASTR,  KC_LBRC,  KC_RBRC,   KC_TRNS, KC_TRNS,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_TRNS,
-                                KC_TRNS,  KC_TRNS,  KC_LALT,   KC_TRNS, KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS
+  KC_TRNS,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                       XXXXXXX,  XXXXXXX,    XXXXXXX,  XXXXXXX,      XXXXXXX,  KC_TRNS,
+  KC_TRNS,  XXXXXXX,  KC_HOME,  XXXXXXX,  KC_END,   XXXXXXX,                       ALT_BSPC, KC_PAGE_UP, KC_UP,    KC_PAGE_DOWN, XXXXXXX,  XXXXXXX,
+  KC_TRNS,  XXXXXXX,  KC_LCTL,  KC_LSFT,  KC_LALT,  XXXXXXX,                       KC_ENT,   KC_LEFT,    KC_DOWN,  KC_RGHT,      XXXXXXX,  XXXXXXX,
+  KC_TRNS,  XXXXXXX,  KC_CUT,   KC_COPY,  KC_PASTE, XXXXXXX,   KC_TRNS, KC_TRNS,   XXXXXXX,  XXXXXXX,    XXXXXXX,  XXXXXXX,      XXXXXXX,  XXXXXXX,
+                                KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS,   KC_TRNS,  KC_TRNS,    KC_TRNS
 ),
 /* ADJUST
  * ,-----------------------------------------.                    ,---------------------------------------------.
@@ -142,15 +145,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ADJUST] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, UG_TOGG, UG_HUEU, UG_SATU, UG_VALU,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT, QK_RBT, XXXXXXX, XXXXXXX, UG_NEXT, UG_HUED, UG_SATD, UG_VALD,
+  XXXXXXX, EMAIL1, EMAIL2, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, UG_TOGG, UG_HUEU, UG_SATU, UG_VALU,
+  XXXXXXX, PASS1,  PASS2, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT, QK_RBT, XXXXXXX, XXXXXXX, UG_NEXT, UG_HUED, UG_SATD, UG_VALD,
                              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS
 ),
 };
 
 // Tri-layer logic
+// ───── FUNCIÓN PARA ACTIVAR _ADJUST ─────
 layer_state_t layer_state_set_user(layer_state_t state) {
-    return update_tri_layer_state(state, _RAISE, _LOWER, _ADJUST);
+    return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
 
 void td_a_acute(tap_dance_state_t *state, void *user_data) {
