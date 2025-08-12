@@ -107,6 +107,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_VOLD, KC_VOLU,  KC_TRNS, KC_TRNS,  KC_PSLS, KC_LCBR, KC_RCBR, KC_ASTR, KC_PERC, KC_BSLS,
                              KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS
 ),
+
+
+
 /* RAISE
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |TRNS |XXXXX |XXXXX |XXXXX |XXXXX | XXXXX |                    |XXXXX |XXXXX |XXXXX |XXXXX |XXXXX | <--  |
