@@ -8,9 +8,7 @@ uint16_t last_typing_timer = 0;
 
 
 //test
-//test
-//sdfsd
-//sdfsd
+
 
 
 extern uint8_t is_master;
