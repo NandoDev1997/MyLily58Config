@@ -34,7 +34,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define RGBLIGHT_VAL_STEP 6
 #    define RGBLIGHT_SLEEP
 #endif
-#define TAPPING_TERM 175
+#define TAPPING_TERM 180
 #define TAPPING_TERM_PER_KEY
 #define OLED_TIMEOUT 120000
 #define OLED_BRIGHTNESS 120

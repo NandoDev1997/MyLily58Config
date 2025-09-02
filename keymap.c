@@ -7,13 +7,6 @@ bool isWriting = false;
 uint16_t last_typing_timer = 0;
 
 
-//test
-//test
-
-//sdfsd
-//sdfsd
-
-
 extern uint8_t is_master;
 
 enum layers {
@@ -92,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,             KC_Q,           KC_W,  TD(TD_E_ACUTE),  KC_R,     KC_T,                       KC_Y,            TD(TD_U_ACUTE), TD(TD_I_ACUTE),  TD(TD_O_ACUTE),  KC_P,     KC_MINS,
     TD(TD_MAYUSCULAS),  TD(TD_A_ACUTE), KC_S,  KC_D,            KC_F,     KC_G,                       KC_H,            KC_J,           KC_K,            KC_L,            KC_SCLN,  TD(TD_COMILLAS),
     KC_LCTL,            KC_Z,           KC_X,  KC_C,            KC_V,     KC_B,   KC_LGUI , KC_PSCR,   TD(TD_N_TILDE),  KC_M,           KC_COMM,         KC_DOT,          KC_SLSH,  TD(TD_MAYUSCULAS),
-                                               KC_LALT,         KC_APP,  LOWER,   KC_SPC,  KC_SPC,   RAISE,           KC_ENT,         KC_RALT
+                                               KC_LALT,         KC_APP,  LOWER,   LT(LOWER, KC_SPC),  LT(RAISE, KC_SPC),   RAISE,           KC_ENT,         KC_RALT
 ),
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -134,10 +127,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RAISE] = LAYOUT(
   KC_TRNS,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                       XXXXXXX,  XXXXXXX,    XXXXXXX,  XXXXXXX,      XXXXXXX,  KC_TRNS,
-  KC_TRNS,  XXXXXXX,  KC_HOME,  XXXXXXX,  KC_END,   XXXXXXX,                       ALT_BSPC, KC_PAGE_UP, KC_UP,    KC_PAGE_DOWN, XXXXXXX,  XXXXXXX,
-  KC_TRNS,  XXXXXXX,  KC_LCTL,  KC_LSFT,  KC_LALT,  XXXXXXX,                       KC_ENT,   KC_LEFT,    KC_DOWN,  KC_RGHT,      XXXXXXX,  XXXXXXX,
-  KC_TRNS,  XXXXXXX,  KC_CUT,   KC_COPY,  KC_PASTE, XXXXXXX,   KC_TRNS, KC_TRNS,   XXXXXXX,  XXXXXXX,    XXXXXXX,  XXXXXXX,      XXXXXXX,  XXXXXXX,
-                                KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS,   KC_TRNS,  KC_TRNS,    KC_TRNS
+  KC_TRNS,  XXXXXXX,  KC_HOME,  XXXXXXX,  KC_END,   KC_ENT,                       KC_ENT, KC_PAGE_UP, KC_UP,    KC_PAGE_DOWN, XXXXXXX,  XXXXXXX,
+  KC_TRNS,  XXXXXXX,  KC_LCTL,  KC_LSFT,  KC_LALT,  XXXXXXX,                       KC_HOME,   KC_LEFT,    KC_DOWN,  KC_RIGHT,      KC_END,  XXXXXXX,
+  KC_TRNS,  XXXXXXX,  LCTL(KC_X),   LCTL(KC_C),  LCTL(KC_V), XXXXXXX,   KC_TRNS, KC_TRNS,   XXXXXXX,  XXXXXXX,    XXXXXXX,  XXXXXXX,      XXXXXXX,  XXXXXXX,
+                                KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS,   ALT_BSPC,  KC_TRNS,    KC_TRNS
 ),
 /* ADJUST
  * ,-----------------------------------------.                    ,---------------------------------------------.
