@@ -14,11 +14,13 @@ enum layers {
     _LOWER,
     _RAISE,
     _ADJUST,
+    _NUMBERS,
 };
 
 
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)
+#define NUMBERS MO(_NUMBERS)
 
 
 enum custom_keycodes {
@@ -27,6 +29,7 @@ enum custom_keycodes {
     EMAIL1,
     EMAIL2,
     ALT_BSPC,
+    ALT_HOLD,
     NEW_SAFE_RANGE  // (opcional, si defines más abajo)
 };
 
@@ -85,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,             KC_Q,           KC_W,  TD(TD_E_ACUTE),  KC_R,     KC_T,                       KC_Y,            TD(TD_U_ACUTE), TD(TD_I_ACUTE),  TD(TD_O_ACUTE),  KC_P,     KC_MINS,
     TD(TD_MAYUSCULAS),  TD(TD_A_ACUTE), KC_S,  KC_D,            KC_F,     KC_G,                       KC_H,            KC_J,           KC_K,            KC_L,            KC_SCLN,  TD(TD_COMILLAS),
     KC_LCTL,            KC_Z,           KC_X,  KC_C,            KC_V,     KC_B,   KC_LGUI , KC_PSCR,   TD(TD_N_TILDE),  KC_M,           KC_COMM,         KC_DOT,          KC_SLSH,  TD(TD_MAYUSCULAS),
-                                               KC_LALT,         KC_APP,  LOWER,   LT(LOWER, KC_SPC),  LT(RAISE, KC_SPC),   RAISE,           KC_ENT,         KC_RALT
+                                               KC_LALT,         KC_APP,  NUMBERS,   LT(LOWER, KC_SPC),  LT(RAISE, KC_SPC),   RAISE,           KC_ENT,         KC_RALT
 ),
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -128,8 +131,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RAISE] = LAYOUT(
   KC_TRNS,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                       XXXXXXX,  XXXXXXX,    XXXXXXX,  XXXXXXX,      XXXXXXX,  KC_TRNS,
   KC_TRNS,  XXXXXXX,  KC_HOME,  XXXXXXX,  KC_END,   KC_ENT,                       KC_ENT, KC_PAGE_UP, KC_UP,    KC_PAGE_DOWN, XXXXXXX,  XXXXXXX,
-  KC_TRNS,  XXXXXXX,  KC_LCTL,  KC_LSFT,  KC_LALT,  XXXXXXX,                       KC_HOME,   KC_LEFT,    KC_DOWN,  KC_RIGHT,      KC_END,  XXXXXXX,
-  KC_TRNS,  XXXXXXX,  LCTL(KC_X),   LCTL(KC_C),  LCTL(KC_V), XXXXXXX,   KC_TRNS, KC_TRNS,   XXXXXXX,  XXXXXXX,    XXXXXXX,  XXXXXXX,      XXXXXXX,  XXXXXXX,
+  KC_TRNS,  XXXXXXX,  KC_LCTL,  KC_LSFT,  KC_LALT,  ALT_HOLD,                       KC_HOME,   KC_LEFT,    KC_DOWN,  KC_RIGHT,      KC_END,  XXXXXXX,
+  KC_TRNS,  XXXXXXX,  LCTL(KC_X),   LCTL(KC_C),  LCTL(KC_V),   XXXXXXX,   KC_TRNS, KC_TRNS,   XXXXXXX,  XXXXXXX,    XXXXXXX,  XXXXXXX,      XXXXXXX,  XXXXXXX,
                                 KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS,   ALT_BSPC,  KC_TRNS,    KC_TRNS
 ),
 /* ADJUST
@@ -153,7 +156,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, PASS1,  PASS2, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT, QK_RBT, XXXXXXX, XXXXXXX, UG_NEXT, UG_HUED, UG_SATD, UG_VALD,
                              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS
 ),
+
+
+/* NUMBERS
+ * ,-----------------------------------------.                    ,---------------------------------------------.
+ * |XXXXX |XXXXX |XXXXX |XXXXX |XXXXX |XXXXX |                    |XXXXX |XXXXX |XXXXX |XXXXX   |XXXXX  |XXXXX  |
+ * |------+------+------+------+------+------|                    |------+------+------+--------+-------+-------|
+ * |XXXXX |XXXXX |XXXXX |XXXXX |XXXXX |XXXXX |                    |XXXXX |XXXXX |XXXXX |XXXXX   |XXXXX  |XXXXX  |
+ * |------+------+------+------+------+------|                    |------+------+------+--------+-------+-------|
+ * |XXXXX |XXXXX |XXXXX |XXXXX |XXXXX |XXXXX |-------.    ,-------|XXXXX |XXXXX |UG_TOG|UG_HUEU |UG_SATU|UG_VALU|
+ * |------+------+------+------+------+------|QK_BOOT|    |QK_RBT |------+------+------+--------+-------+-------|
+ * |XXXXX |XXXXX |XXXXX |XXXXX |XXXXX |XXXXX |-------|    |-------|XXXXX |XXXXX |UG_NEXT|UG_HUED|UG_SATD|UG_VALD|
+ * `-----------------------------------------/       /     \      \---------------------------------------------'
+ *                   |TRNS  |TRNS  |TRNS  | / TRNS  /       \ TRNS \ | TRNS | TRNS | TRNS |
+ *                   |      |      |      |/       /         \      \|      |      |      |
+ *                   `----------------------------'           '-----''-------------------'
+ */
+[_NUMBERS] = LAYOUT(
+  KC_TRNS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_TRNS,
+  KC_TRNS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                    XXXXXXX, KC_7,    KC_8,    KC_9, XXXXXXX, XXXXXXX,
+  KC_TRNS, XXXXXXX, XXXXXXX, ALT_HOLD, XXXXXXX, XXXXXXX,                    XXXXXXX, KC_4,    KC_5,    KC_6, XXXXXXX, XXXXXXX,
+  KC_TRNS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_TRNS, KC_TRNS,  XXXXXXX, KC_1,    KC_2,    KC_3, XXXXXXX, XXXXXXX,
+                             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_0,    KC_TRNS, KC_TRNS
+),
+
+
 };
+
+
+
+
+
+
 
 // Tri-layer logic
 // ───── FUNCIÓN PARA ACTIVAR _ADJUST ─────
@@ -208,6 +242,9 @@ void td_n_tilde(tap_dance_state_t *state, void *user_data) {
         tap_code16(US_NTIL);
     }
 }
+
+
+
 
 void td_comillas(tap_dance_state_t *state, void *user_data) {
     if (state->count == 1) {
@@ -489,17 +526,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         /* KEYBOARD PET STATUS START */
         case KC_A ... KC_Z:
         case KC_1 ... KC_0:
-        case KC_DOT:
-        case KC_COMM:
-        case KC_MINS:
-        case KC_QUOT:
-        case KC_SCLN:
-        case KC_SLSH:
-        case KC_BSLS:
-        case KC_LBRC:
-        case KC_RBRC:
-        case KC_EQL:
-        case KC_GRV:
             if (record->event.pressed) {
                 isWriting = true;
                 last_typing_timer = timer_read();
@@ -544,6 +570,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case EMAIL2:
             if (record->event.pressed) {
                 SEND_STRING("fmorales@kernotek.com");
+            }
+            return false;
+        case ALT_HOLD:
+            if (record->event.pressed) {
+                register_code(KC_LALT);   // Presiona Alt
+                tap_code(KC_TAB);
+            } else {
+                unregister_code(KC_LALT); // Suelta Alt
             }
             return false;
         case PASS1:
